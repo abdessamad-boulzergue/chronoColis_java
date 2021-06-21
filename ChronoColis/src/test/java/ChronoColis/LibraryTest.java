@@ -4,6 +4,9 @@
 package ChronoColis;
 
 import org.junit.Test;
+
+import chronoColis.Library;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
