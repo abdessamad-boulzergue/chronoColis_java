@@ -34,12 +34,14 @@ public class UserControleur {
 	} 
 	
 	@RequestMapping("/save")
-    public User save() {
+    public void sauvgarder() {
+	  
      User usr = new User();
      usr.setName("user 1 ");
      usr.setPassword("pass");
-       return  userRepo.save(usr);
+         userRepo.save(usr);
    
+         System.out.println("utilisateur sauvgarder");
    } 
 
 	
