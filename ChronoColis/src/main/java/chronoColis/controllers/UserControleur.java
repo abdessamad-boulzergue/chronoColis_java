@@ -1,6 +1,5 @@
 package chronoColis.controllers;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,57 +10,45 @@ import org.springframework.web.bind.annotation.RestController;
 
 import chronoColis.models.User;
 import chronoColis.repository.UserRepo;
-import medicale.models.Dossiermedicale;
 
-@CrossOrigin // anotation de sécurité permet la connexion à partir de la méme machine qui héberge l'application
+@CrossOrigin // anotation de sï¿½curitï¿½ permet la connexion ï¿½ partir de la mï¿½me machine qui hï¿½berge l'application
 @RestController
-
 public class UserControleur {
+  
 	@Autowired
-	private UserRepo use;
+	private UserRepo userRepo;
 	
 	
 	@RequestMapping("/user/{id}")
 	public User affiche(@PathVariable("id") int iduser) {
-	
-	return use.getUser(iduser);
-	
-	
-	
-}
+	  
+	    return userRepo.getById(iduser);
+	    	
+	}
 
-	
-	
 	@RequestMapping("/users")
 	 public List<User> afficher() {
-		
-     return   use.findAll();
-     
- } 
+	  
+	    return   userRepo.findAll();
+	
+	} 
+	
+	@RequestMapping("/save")
+    public User save() {
+     User usr = new User();
+     usr.setName("user 1 ");
+     usr.setPassword("pass");
+       return  userRepo.save(usr);
+   
+   } 
 
 	
 	@RequestMapping("/deletuser/{id}")
 	public void deletParcode(@PathVariable("id") int iduser) {
+	  
+	  userRepo.deleteById(iduser);
 	
-	 use.deletUser(iduser);
-	 
-	System.out.println("  user de numero  "+" "+iduser+"supprimer");
 	}
-	
-	
-	
-	//@RequestMapping("/inseruser/{iduser}/{name}/{password}")
-	 //  public User ajouteruser(@PathVariable("iduser") int iduser,@PathVariable("name") String name,@PathVariable("password") String password) {
-			User u=new User();
-		
-			//u=
-			
-			//System.out.println("l'insertion de  "+iduser+" "+name+" "+" "+" "+password );
-			//return d;
-		}
-	
-	
-	
 	
 }
 	

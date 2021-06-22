@@ -1,19 +1,13 @@
 package chronoColis.models;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name="user")
 public class User {
-
-	
-	
-	
-	
 	
 	@Id       // obligatoire ds chaque model
 	@Column(name ="iduser" )
@@ -23,8 +17,10 @@ public class User {
 
 	@Column(name ="name" )
 	private String name;
+	
 	@Column(name ="password" )
 	private String password;
+	
 	public int getIduser() {
 		return iduser;
 	}
